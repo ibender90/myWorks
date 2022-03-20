@@ -1,5 +1,5 @@
 package ru.geekbrains.homework1;
-//test comment
+
 public class HomeWorkApp {
     public static void main(String[] args) {
         printTreeWords();
