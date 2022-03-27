@@ -21,6 +21,9 @@ public class HomeWorkApp {
 //        int[] arr5 = {2, 2, 2, 1, 2, 2, 10, 1};
 //        System.out.println(checkBalance(arr5)); //проверка седьмого задания
 
+        int[] test = {1, 2, 3, 4, 5};
+        System.out.println(Arrays.toString(moveElements(test, 1)));
+
     }
 
     public static int[] invertSignal(int[] input) { //первое задание
@@ -76,7 +79,7 @@ public class HomeWorkApp {
     }
 
     public static boolean checkBalance(int[] arr) {
-        if(arr.length < 2){
+        if (arr.length < 2) {
             return false; // массив из одного элемента не подходит по условиям задачи
         }
         int left = arr[0];
@@ -98,4 +101,35 @@ public class HomeWorkApp {
         }
         return right == left;
     }
+
+    public static int[] moveElements(int[] input, int n) {
+        if (input.length == 1) { //нечего переставлять
+            return input;
+        }
+        if (n < 0) {
+            while (n != 0) {
+                int temp = input[0]; //сохраню первый элемент, остальные сдвину влево по одному
+                for (int i = 1; i < input.length; i++) {
+                    input[i - 1] = input[i];
+                }
+                input[input.length - 1] = temp; //тот, что был первый, стал последним
+                n++;
+            }
+        }
+        if (n > 0)
+            while (n > 0) {
+                int temp = input[input.length - 1]; //сохраню последний элемент
+                for (int i = input.length - 2; i >= 0; i--) { //иду с конца массива
+                    input[i + 1] = input[i];
+                }
+                input[0] = temp; //последний стал первым
+                n--;
+            }
+        return input;
+    }
+    /*
+    здесь можно ещё значительно улучшить алгоритм, но такой задачи не было. Например:
+    1) проследить чтобы сдвигов было меньше чем элементов массива, иначен пересчитать n
+    2) 4 сдвига вправо для массива из 5 элементов = 1 сдвиг влево и т.д.
+     */
 }
