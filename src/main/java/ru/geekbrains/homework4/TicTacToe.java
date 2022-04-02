@@ -83,7 +83,7 @@ public class TicTacToe {
 
     private static void playRound() {
         System.out.printf("Round %d start\n", ++roundCounter);
-        initField(3, 3);
+        initField(5, 5);
         if (dotHuman == DOT_X) {
             printField();
             humanFirst();
@@ -193,55 +193,50 @@ public class TicTacToe {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (field[y][x] == dot) { //if cycle found dot
-                    //check diagonal
                     winCounter++;
-                    for (int i = x + 1; i < fieldSizeX; i++) {
+                    for (int i = x + 1; i < fieldSizeX; i++) { //horizontal checks
                         if (field[y][i] == dot) {
                             winCounter++;
+                            System.out.println("horizontal " + winCounter);
                         } else {
                             winCounter = 1;
-                            break;
+                        }
+                        if (winCounter == winLength) {
+                            return true;
                         }
                     }
-                    if (winCounter == winLength) {
-                        return true;
-                    }
-                    //check vertical
-                    for (int i = y + 1; i < fieldSizeX; i++) {
+                    for (int i = y + 1; i < fieldSizeY; i++) { //vertical check
                         if (field[i][x] == dot) {
                             winCounter++;
+                            System.out.println("vertical " + winCounter);
                         } else {
                             winCounter = 1;
-                            break;
+                        }
+                        if (winCounter == winLength) {
+                            return true;
                         }
                     }
-                    if (winCounter == winLength) {
-                        return true;
+                    for (int i = x + 1; i < fieldSizeX && i < fieldSizeY; i++) { //check diagonal to right and down \
+                        if (field[i][i] == dot) {
+                            winCounter++;
+                            System.out.println("diagonal down " + winCounter);
+                        } else {
+                            winCounter = 1;
+                        }
+                        if (winCounter == winLength) {
+                            return true;
+                        }
                     }
-                    //check diagonal left to right down
-                    for (int i = x + 1; i < fieldSizeX && i < fieldSizeY; i++){
-                        if(field[i][i] == dot){
+                    //check diagonal /
+                    for (int i = x - 1, z = y + 1; i < fieldSizeX && z < fieldSizeY && i >= 0; i--, z++) {
+                        if (field[z][i] == dot) {
                             winCounter++;
                         } else {
                             winCounter = 1;
-                            break;
                         }
-                    }
-                    if (winCounter == winLength) {
-                        return true;
-                    }
-                    //check diagonal left to right up
-                    for (int i = x; i < fieldSizeX && i < fieldSizeY; i++){
-
-                        if(field[i][i] == dot){
-                            winCounter++;
-                        } else {
-                            winCounter = 1;
-                            break;
+                        if (winCounter == winLength) {
+                            return true;
                         }
-                    }
-                    if (winCounter == winLength) {
-                        return true;
                     }
                 }
                 winCounter = 0;
