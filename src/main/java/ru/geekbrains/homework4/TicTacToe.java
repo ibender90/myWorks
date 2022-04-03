@@ -242,50 +242,46 @@ public class TicTacToe {
                     int shift1;
                     int shift2;
                     shift1 = x;
-                    while (shift1 < fieldSizeX && field[y][shift1] == dot) {
+                    while (shift1 < fieldSizeX && field[y][shift1] == dot) { //horizontal
                         winCounter++;
+                        if (winCounter == winLength) {
+                            return true;
+                        }
                         shift1++;
-                    }
-                    if (winCounter == 3) {
-                        System.out.println("horizontal " + winCounter);
-                        return true;
                     }
 
                     winCounter = 0;
                     shift2 = y;
-                    while (shift2 < fieldSizeY  && field[shift2][x] == dot) {
+                    while (shift2 < fieldSizeY  && field[shift2][x] == dot) { //vertical
                         winCounter++;
+                        if (winCounter == winLength) {
+                            return true;
+                        }
                         shift2++;
-                    }
-                    if (winCounter == 3) {
-                        System.out.println("vertical " + winCounter);
-                        return true;
                     }
 
                     winCounter = 1;
                     shift1 = x + 1;
                     shift2 = y + 1;
                     while (shift1 < fieldSizeX && shift2 < fieldSizeY && field[shift2][shift1] == dot){
-                        winCounter++;
+                        winCounter++; //diagonal \
+                        if (winCounter == winLength) {
+                            return true;
+                        }
                         shift1++;
                         shift2++;
-                    }
-                    if (winCounter == 3) {
-                        System.out.println("diagonal1 " + winCounter);
-                        return true;
                     }
 
                     winCounter = 1;
                     shift1 = x + 1;
                     shift2 = y - 1;
                     while (shift1 < fieldSizeX && shift2 >= 0 && field[shift2][shift1] == dot){
-                        winCounter++;
+                        winCounter++; //diagonal /
+                        if (winCounter == winLength) {
+                            return true;
+                        }
                         shift1++;
                         shift2--;
-                    }
-                    if (winCounter == 3) {
-                        System.out.println("diagonal2 " + winCounter);
-                        return true;
                     }
                 }
                 winCounter = 0;
