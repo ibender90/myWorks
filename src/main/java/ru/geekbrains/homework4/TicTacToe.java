@@ -61,7 +61,6 @@ public class TicTacToe {
 
     private static void startNewGame() {
         while (true) {
-            //setFieldSize();
             chooseDot();
             playRound();
 
@@ -76,10 +75,6 @@ public class TicTacToe {
             }
         }
     }
-
-//    private static void setFieldSize() {
-//        System.out.print("Enter field size: ");
-//    }
 
     private static void playRound() {
         System.out.printf("Round %d start\n", ++roundCounter);
@@ -161,14 +156,65 @@ public class TicTacToe {
     }
 
     private static void aiTurn() {
-        int x;
-        int y;
+        if (placeDotInTheMiddle()) {
+            System.out.println("ai placed dot in the middle or next to it");
+        } else if (winAttempt()) {
+            System.out.println("ai tried to win");
+        } else if (blockPlayer()) {
+            System.out.println("ai blocked player");
+        } else {
+            int x;
+            int y;
 
-        do {
-            x = random.nextInt(fieldSizeX);
-            y = random.nextInt(fieldSizeY);
-        } while (!isCellValid(y, x));
-        field[y][x] = dotAi;
+            do {
+                x = random.nextInt(fieldSizeX);
+                y = random.nextInt(fieldSizeY);
+            } while (!isCellValid(y, x));
+            field[y][x] = dotAi;
+            System.out.println("ai made random move");
+        }
+    }
+
+    private static boolean placeDotInTheMiddle() {
+        //place dot in the middle or close to it
+        if (isCellValid(fieldSizeY / 2, fieldSizeX / 2)) {
+            field[fieldSizeY / 2][fieldSizeX / 2] = dotAi;
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean blockPlayer() {
+        for (int y = 0; y < fieldSizeY; y++) {
+            for (int x = 0; x < fieldSizeX; x++) {
+                if (isCellValid(y, x)) {
+                    field[y][x] = dotHuman;
+                    if (checkWin(dotHuman)) {
+                        field[y][x] = dotAi;
+                        return true;
+                    } else {
+                        field[y][x] = DOT_EMPTY;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean winAttempt() {
+        for (int y = 0; y < fieldSizeY; y++) {
+            for (int x = 0; x < fieldSizeX; x++) {
+                if (isCellValid(y, x)) {
+                    field[y][x] = dotAi;
+                    if (checkWin(dotAi)) {
+                        return true;
+                    } else {
+                        field[y][x] = DOT_EMPTY;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     private static boolean isCellValid(int y, int x) {
@@ -193,60 +239,58 @@ public class TicTacToe {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (field[y][x] == dot) { //if cycle found dot
-                    winCounter++;
-                    for (int i = x + 1; i < fieldSizeX; i++) { //horizontal checks
-                        if (field[y][i] == dot) {
-                            winCounter++;
-                            System.out.println("horizontal " + winCounter);
-                        } else {
-                            winCounter = 1;
-                        }
-                        if (winCounter == winLength) {
-                            return true;
-                        }
+                    int shift1;
+                    int shift2;
+                    shift1 = x;
+                    while (shift1 < fieldSizeX && field[y][shift1] == dot) {
+                        winCounter++;
+                        shift1++;
                     }
-                    for (int i = y + 1; i < fieldSizeY; i++) { //vertical check
-                        if (field[i][x] == dot) {
-                            winCounter++;
-                            System.out.println("vertical " + winCounter);
-                        } else {
-                            winCounter = 1;
-                        }
-                        if (winCounter == winLength) {
-                            return true;
-                        }
+                    if (winCounter == 3) {
+                        System.out.println("horizontal " + winCounter);
+                        return true;
                     }
-                    for (int i = x + 1; i < fieldSizeX && i < fieldSizeY; i++) { //check diagonal to right and down \
-                        if (field[i][i] == dot) {
-                            winCounter++;
-                            System.out.println("diagonal down " + winCounter);
-                        } else {
-                            winCounter = 1;
-                        }
-                        if (winCounter == winLength) {
-                            return true;
-                        }
+
+                    winCounter = 0;
+                    shift2 = y;
+                    while (shift2 < fieldSizeY  && field[shift2][x] == dot) {
+                        winCounter++;
+                        shift2++;
                     }
-                    //check diagonal /
-                    for (int i = x - 1, z = y + 1; i < fieldSizeX && z < fieldSizeY && i >= 0; i--, z++) {
-                        if (field[z][i] == dot) {
-                            winCounter++;
-                        } else {
-                            winCounter = 1;
-                        }
-                        if (winCounter == winLength) {
-                            return true;
-                        }
+                    if (winCounter == 3) {
+                        System.out.println("vertical " + winCounter);
+                        return true;
+                    }
+
+                    winCounter = 1;
+                    shift1 = x + 1;
+                    shift2 = y + 1;
+                    while (shift1 < fieldSizeX && shift2 < fieldSizeY && field[shift2][shift1] == dot){
+                        winCounter++;
+                        shift1++;
+                        shift2++;
+                    }
+                    if (winCounter == 3) {
+                        System.out.println("diagonal1 " + winCounter);
+                        return true;
+                    }
+
+                    winCounter = 1;
+                    shift1 = x + 1;
+                    shift2 = y - 1;
+                    while (shift1 < fieldSizeX && shift2 >= 0 && field[shift2][shift1] == dot){
+                        winCounter++;
+                        shift1++;
+                        shift2--;
+                    }
+                    if (winCounter == 3) {
+                        System.out.println("diagonal2 " + winCounter);
+                        return true;
                     }
                 }
                 winCounter = 0;
             }
         }
-
-
-//        if (field[0][0] == dot && field[0][1] == dot && field[0][2] == dot) return true; //horiz
-//        if (field[0][0] == dot && field[1][0] == dot && field[2][0] == dot) return true; //vert
-//        if (field[0][0] == dot && field[1][1] == dot && field[2][2] == dot) return true; //diag
         return false;
     }
 }
