@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="added smarter Ai and improved checkWin">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/geekbrains/homework4/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/homework4/TicTacToe.java" afterDir="false" />
+    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="made chackWin a bit shorter">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/homework5/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/geekbrains/homework4/TicTacToe.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="check_homework4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -117,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648969730650</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="made chackWin a bit shorter">
+      <created>1648970713327</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1648970713327</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +159,7 @@
     <MESSAGE value="new package and class for homework 4 created" />
     <MESSAGE value="fixed checkWin to work on bigger field" />
     <MESSAGE value="added smarter Ai and improved checkWin" />
-    <option name="LAST_COMMIT_MESSAGE" value="added smarter Ai and improved checkWin" />
+    <MESSAGE value="made chackWin a bit shorter" />
+    <option name="LAST_COMMIT_MESSAGE" value="made chackWin a bit shorter" />
   </component>
 </project>
