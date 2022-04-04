@@ -239,49 +239,48 @@ public class TicTacToe {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (field[y][x] == dot) { //if cycle found dot
-                    int shift1;
-                    int shift2;
-                    shift1 = x;
-                    while (shift1 < fieldSizeX && field[y][shift1] == dot) { //horizontal
+                    int shiftX = x;
+                    int shiftY = y;
+
+                    while (shiftX < fieldSizeX && field[y][shiftX] == dot) { //horizontal
                         winCounter++;
                         if (winCounter == winLength) {
                             return true;
                         }
-                        shift1++;
+                        shiftX++;
                     }
 
                     winCounter = 0;
-                    shift2 = y;
-                    while (shift2 < fieldSizeY  && field[shift2][x] == dot) { //vertical
+                    while (shiftY < fieldSizeY  && field[shiftY][x] == dot) { //vertical
                         winCounter++;
                         if (winCounter == winLength) {
                             return true;
                         }
-                        shift2++;
+                        shiftY++;
                     }
 
                     winCounter = 1;
-                    shift1 = x + 1;
-                    shift2 = y + 1;
-                    while (shift1 < fieldSizeX && shift2 < fieldSizeY && field[shift2][shift1] == dot){
+                    shiftX = x + 1;
+                    shiftY = y + 1;
+                    while (shiftX < fieldSizeX && shiftY < fieldSizeY && field[shiftY][shiftX] == dot){
                         winCounter++; //diagonal \
                         if (winCounter == winLength) {
                             return true;
                         }
-                        shift1++;
-                        shift2++;
+                        shiftX++;
+                        shiftY++;
                     }
 
                     winCounter = 1;
-                    shift1 = x + 1;
-                    shift2 = y - 1;
-                    while (shift1 < fieldSizeX && shift2 >= 0 && field[shift2][shift1] == dot){
+                    shiftX = x + 1;
+                    shiftY = y - 1;
+                    while (shiftX < fieldSizeX && shiftY >= 0 && field[shiftY][shiftX] == dot){
                         winCounter++; //diagonal /
                         if (winCounter == winLength) {
                             return true;
                         }
-                        shift1++;
-                        shift2--;
+                        shiftX++;
+                        shiftY--;
                     }
                 }
                 winCounter = 0;
