@@ -5,7 +5,7 @@ public class Cat extends Animal {
 
     protected Cat(String name) {
         super(name);
-        setRunAgility(200);
+        this.setRunAgility(200);
         catCount++;
     }
 

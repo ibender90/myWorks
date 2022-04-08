@@ -5,8 +5,8 @@ public class Dog extends Animal{
 
     public Dog(String name) {
         super(name);
-        setRunAgility(500);
-        setSwimAgility(10);
+        this.setRunAgility(500);
+        this.setSwimAgility(10);
         dogCount++;
     }
 

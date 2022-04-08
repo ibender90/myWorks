@@ -14,5 +14,6 @@ public class Homework6 {
 
         System.out.println("Животных создано: "+ Animal.getAnimalCount());
         System.out.println("Собак создано: " + Dog.getDogCount());
+        System.out.println("Котов создано: " + Cat.getCatCount());
     }
 }
