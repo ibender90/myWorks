@@ -60,6 +60,7 @@ public class TicTacToe {
     }
 
     private static void startNewGame() {
+        setFieldSize();
         while (true) {
             chooseDot();
             playRound();
@@ -76,9 +77,17 @@ public class TicTacToe {
         }
     }
 
+    private static void setFieldSize() {
+        do {
+            System.out.println("Enter field size: ");
+            fieldSizeX = scanner.nextInt();
+            fieldSizeY = scanner.nextInt();
+        } while (!(fieldSizeX <= 10 && fieldSizeY <= 10 && fieldSizeX > 2 && fieldSizeY > 2));
+    }
+
     private static void playRound() {
         System.out.printf("Round %d start\n", ++roundCounter);
-        initField(5, 5);
+        initField(fieldSizeX, fieldSizeY);
         if (dotHuman == DOT_X) {
             printField();
             humanFirst();
@@ -234,57 +243,76 @@ public class TicTacToe {
     }
 
     private static boolean checkWin(char dot) {
-        int winCounter = 0;
+//        int winCounter = 0;
         //search for dot
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (field[y][x] == dot) { //if cycle found dot
-                    int shiftX = x;
-                    int shiftY = y;
-
-                    while (shiftX < fieldSizeX && field[y][shiftX] == dot) { //horizontal
-                        winCounter++;
-                        if (winCounter == winLength) {
-                            return true;
-                        }
-                        shiftX++;
+                    if (drawLine(y, x, 1, 0, dot) ||
+                            drawLine(y, x, 0, 1, dot) ||
+                            drawLine(y, x, 1, 1, dot) ||
+                            drawLine(y, x, 1, -1, dot)) {
+                        return true;
                     }
-
-                    winCounter = 0;
-                    while (shiftY < fieldSizeY  && field[shiftY][x] == dot) { //vertical
-                        winCounter++;
-                        if (winCounter == winLength) {
-                            return true;
-                        }
-                        shiftY++;
-                    }
-
-                    winCounter = 1;
-                    shiftX = x + 1;
-                    shiftY = y + 1;
-                    while (shiftX < fieldSizeX && shiftY < fieldSizeY && field[shiftY][shiftX] == dot){
-                        winCounter++; //diagonal \
-                        if (winCounter == winLength) {
-                            return true;
-                        }
-                        shiftX++;
-                        shiftY++;
-                    }
-
-                    winCounter = 1;
-                    shiftX = x + 1;
-                    shiftY = y - 1;
-                    while (shiftX < fieldSizeX && shiftY >= 0 && field[shiftY][shiftX] == dot){
-                        winCounter++; //diagonal /
-                        if (winCounter == winLength) {
-                            return true;
-                        }
-                        shiftX++;
-                        shiftY--;
-                    }
+//                    int shiftX = x;
+//                    int shiftY = y;
+//                    while (shiftX < fieldSizeX && field[y][shiftX] == dot) { //horizontal
+//                        winCounter++;
+//                        if (winCounter == winLength) {
+//                            return true;
+//                        }
+//                        shiftX++;
+//                    }
+//
+//                    winCounter = 0;
+//                    while (shiftY < fieldSizeY && field[shiftY][x] == dot) { //vertical
+//                        winCounter++;
+//                        if (winCounter == winLength) {
+//                            return true;
+//                        }
+//                        shiftY++;
+//                    }
+//
+//                    winCounter = 1;
+//                    shiftX = x + 1;
+//                    shiftY = y + 1;
+//                    while (shiftX < fieldSizeX && shiftY < fieldSizeY && field[shiftY][shiftX] == dot) {
+//                        winCounter++; //diagonal \
+//                        if (winCounter == winLength) {
+//                            return true;
+//                        }
+//                        shiftX++;
+//                        shiftY++;
+//                    }
+//
+//                    winCounter = 1;
+//                    shiftX = x + 1;
+//                    shiftY = y - 1;
+//                    while (shiftX < fieldSizeX && shiftY >= 0 && field[shiftY][shiftX] == dot) {
+//                        winCounter++; //diagonal /
+//                        if (winCounter == winLength) {
+//                            return true;
+//                        }
+//                        shiftX++;
+//                        shiftY--;
+//                    }
                 }
-                winCounter = 0;
+//                winCounter = 0;
             }
+        }
+        return false;
+    }
+
+    private static boolean drawLine(int y, int x, int shiftX, int shiftY, char dot) {
+        int winCounter = 0;
+
+        while (x < fieldSizeX && y < fieldSizeY && y >= 0 && field[y][x] == dot) { //y-- will happen
+            winCounter++;
+            if (winCounter == winLength) {
+                return true;
+            }
+            y = y + shiftY;
+            x = x + shiftX;
         }
         return false;
     }
