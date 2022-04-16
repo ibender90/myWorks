@@ -20,13 +20,13 @@ public class Game {
     private final Scanner scanner = new Scanner(System.in);
     private final Random random = new Random();
 
-    private char[][] field;
+
     private char dotHuman = DOT_X;
     private char dotAi = DOT_0;
-    private int fieldSizeX = 3;
-    private int fieldSizeY = 3;
-    private int scoreHuman;
-    private int scoreAi;
+    private int fieldSizeX;
+    private int fieldSizeY;
+    int scoreHuman;
+    int scoreAi;
     private int roundCounter;
     private int winLength;
 
@@ -48,9 +48,17 @@ public class Game {
 
 
     public void getResponse() { // хочу получить ответ на нажатие кнопки
-        gameCheck(dotHuman);
-        aiTurn();
-        gameCheck(dotAi);
+        //сделаю режим для игры против компа
+        if(gameCheck(dotHuman)){
+            //resetField();
+            showGameOverWindow();
+        } else {
+            aiTurn();
+            if(gameCheck(dotAi)){
+                //resetField();
+                showGameOverWindow();
+            }
+        }
     }
 
     private boolean simpleCheckWin(char dot) {
@@ -69,30 +77,9 @@ public class Game {
         return false;
     }
 
-    private void initField(int sizeX, int sizeY) { // оставлю инициализацию
-        fieldSizeX = sizeX;
-        fieldSizeY = sizeY;
-        field = new char[fieldSizeY][fieldSizeX];
-
-        for (int y = 0; y < fieldSizeY; y++) {
-            for (int x = 0; x < fieldSizeX; x++) {
-                field[y][x] = DOT_EMPTY;
-            }
-        }
-    }
-
-
-    private void setFieldSize() {
-        do {
-            System.out.println("Enter field size: ");
-            fieldSizeX = scanner.nextInt();
-            fieldSizeY = scanner.nextInt();
-        } while (!(fieldSizeX <= 10 && fieldSizeY <= 10 && fieldSizeX > 2 && fieldSizeY > 2));
-    }
 
     private void playRound() {
         System.out.printf("Round %d start\n", ++roundCounter);
-        initField(fieldSizeX, fieldSizeY);
         if (dotHuman == DOT_X) {
 
             humanFirst();
@@ -163,7 +150,7 @@ public class Game {
             x = scanner.nextInt() - 1;
             y = scanner.nextInt() - 1;
         } while (!isCellValid(y, x));
-        field[y][x] = dotHuman;
+
         buttonField[y][x].setText(String.valueOf(dotHuman));
     }
 
@@ -267,5 +254,20 @@ public class Game {
             x = x + shiftX;
         }
         return false;
+    }
+
+    public void resetField(){
+        for(CustomButton[] row : buttonField){
+            for (CustomButton button:
+                 row) {
+                button.setEnabled(true);
+                button.dot = DOT_EMPTY;
+                button.setText(" ");
+            }
+        }
+    }
+
+    private void showGameOverWindow(){
+        new GameOverWindow(this);
     }
 }

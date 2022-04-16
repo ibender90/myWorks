@@ -10,6 +10,7 @@ public class MyWindow extends JFrame {
     private int columns = 3;
     private CustomButton[][] buttons;
     private Game game;
+    private String score;
 
     public MyWindow() {
         setBounds(500, 300, WIDTH, HEIGHT);
@@ -17,7 +18,7 @@ public class MyWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JPanel score = new JPanel();
-        JLabel text = new JLabel("Score");
+        JLabel text = new JLabel(setScore(game));
         score.add(text);
         add(score, BorderLayout.NORTH);
 
@@ -32,7 +33,6 @@ public class MyWindow extends JFrame {
         buttonPanel.add(btnSettings);
         buttonPanel.add(btnExit);
         add(buttonPanel, BorderLayout.SOUTH);
-
 
 
         setVisible(true);
@@ -52,7 +52,7 @@ public class MyWindow extends JFrame {
         System.out.printf("Mode: %d, Size: %d length: %d\n", gameMode, fieldSize, winLength);
     }
 
-    public void createField(int rows, int columns){
+    public void createField(int rows, int columns) {
         JPanel panel = new JPanel(new GridLayout(rows, columns));
         buttons = new CustomButton[rows][columns];
         for (int y = 0; y < columns; y++) {
@@ -65,4 +65,14 @@ public class MyWindow extends JFrame {
         add(panel);
         setVisible(true);
     }
+
+    public String setScore(Game condition) {
+        if (condition == null) {
+            return " ";
+        } else {
+            return "Your score: " + condition.scoreHuman + "      AI score: " + condition.scoreAi;
+        }
+    }
+
+
 }
