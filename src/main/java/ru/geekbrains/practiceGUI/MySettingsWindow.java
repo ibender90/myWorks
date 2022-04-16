@@ -22,6 +22,8 @@ public class MySettingsWindow extends JFrame {
     private MyWindow myWindow;
 
     public MySettingsWindow(MyWindow gameWindow) {
+        setVisible(true);
+        setAlwaysOnTop(true);
         this.myWindow = gameWindow;
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(gameWindow);
@@ -29,7 +31,11 @@ public class MySettingsWindow extends JFrame {
         setTitle("Settings");
         setLayout(new GridLayout(10, 1));
         JButton buttonStart = new JButton("START");
-        buttonStart.addActionListener(e -> submitSettings(myWindow));
+        buttonStart.addActionListener(e -> {
+            //очистить поле
+
+            submitSettings(myWindow);
+        });
         addFieldSize();
         addGameMode();
         add(buttonStart);

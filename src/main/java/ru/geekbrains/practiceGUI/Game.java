@@ -35,7 +35,7 @@ public class Game {
     }
     public Game() {
     }
-    public void startNewGame(int gameMode, int fieldSize, int winLength) {
+    public void startNewGame(int gameMode, int fieldSize, int winLength) { //добавть fieldSizeY
         this.gameMode = gameMode;
         fieldSizeX = fieldSize;
         fieldSizeY = fieldSize;
@@ -50,12 +50,10 @@ public class Game {
     public void getResponse() { // хочу получить ответ на нажатие кнопки
         //сделаю режим для игры против компа
         if(gameCheck(dotHuman)){
-            //resetField();
             showGameOverWindow();
         } else {
             aiTurn();
             if(gameCheck(dotAi)){
-                //resetField();
                 showGameOverWindow();
             }
         }
@@ -77,45 +75,6 @@ public class Game {
         return false;
     }
 
-
-    private void playRound() {
-        System.out.printf("Round %d start\n", ++roundCounter);
-        if (dotHuman == DOT_X) {
-
-            humanFirst();
-        } else {
-            aiFirst();
-        }
-    }
-
-    private void aiFirst() {
-        while (true) {
-            aiTurn();
-            if (gameCheck(dotAi)) {
-                break;
-            }
-            humanTurn();
-            if (gameCheck(dotHuman)) {
-                break;
-            }
-        }
-    }
-
-    private void humanFirst() {
-        while (true) {
-            humanTurn();
-
-            if (gameCheck(dotHuman)) {
-                break;
-            }
-            aiTurn();
-            if (gameCheck(dotAi)) {
-                break;
-            }
-        }
-
-    }
-
     private boolean gameCheck(char dot) {
         if (simpleCheckWin(dot) && dot == dotHuman) {
             System.out.println("You win!");
@@ -129,30 +88,6 @@ public class Game {
         return checkDraw();
     }
 
-    private void chooseDot() {
-        System.out.print("To play with X type 'X', to play with '0' type anything: ");
-
-        if (scanner.next().toLowerCase(Locale.ROOT).equals("x")) {
-            dotHuman = DOT_X;
-            dotAi = DOT_0;
-        } else {
-            dotHuman = DOT_0;
-            dotAi = DOT_X;
-        }
-    }
-
-    private void humanTurn() {
-        int x;
-        int y;
-
-        do {
-            System.out.print("Please enter coordinates x y : ");
-            x = scanner.nextInt() - 1;
-            y = scanner.nextInt() - 1;
-        } while (!isCellValid(y, x));
-
-        buttonField[y][x].setText(String.valueOf(dotHuman));
-    }
 
     private void aiTurn() {
         if (placeDotInTheMiddle()) {
@@ -269,5 +204,9 @@ public class Game {
 
     private void showGameOverWindow(){
         new GameOverWindow(this);
+    }
+
+    public int[] getScore(){
+          return new int[]{scoreAi, scoreHuman};
     }
 }

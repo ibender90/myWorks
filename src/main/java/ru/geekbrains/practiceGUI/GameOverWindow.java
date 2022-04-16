@@ -12,11 +12,14 @@ public class GameOverWindow extends JFrame {
 
     public GameOverWindow(Game game){
         this.currentGame = game;
-        setBounds(500, 300, WINDOW_WIDTH, WINDOW_HEIGHT);
+        setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+        setLocationRelativeTo(null);
+
         setTitle("Round is finished");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        JLabel text = new JLabel("result");
+        String result = "Computer: " + currentGame.getScore()[0]+ "   " + "Player: " +currentGame.getScore()[1];
+        JLabel text = new JLabel(result);
         JPanel buttons = new JPanel(new GridLayout(1,2));
         add(text, BorderLayout.NORTH);
 

@@ -11,9 +11,12 @@ public class MyWindow extends JFrame {
     private CustomButton[][] buttons;
     private Game game;
     private String score;
+    private JPanel panelWithButtons;
 
     public MyWindow() {
-        setBounds(500, 300, WIDTH, HEIGHT);
+        setSize(WIDTH,HEIGHT);
+        setLocationRelativeTo(null);
+        //setBounds(500, 300, WIDTH, HEIGHT);
         setTitle("TicTacToe");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -24,19 +27,18 @@ public class MyWindow extends JFrame {
 
         MySettingsWindow settingsWindow = new MySettingsWindow(this);
 
-        JButton btnStart = new JButton("NEW GAME");
+
         JButton btnSettings = new JButton("SETTINGS");
         JButton btnExit = new JButton("EXIT");
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 3));
-        buttonPanel.add(btnStart);
+        buttonPanel.setLayout(new GridLayout(1, 2));
         buttonPanel.add(btnSettings);
         buttonPanel.add(btnExit);
         add(buttonPanel, BorderLayout.SOUTH);
 
 
         setVisible(true);
-        btnStart.addActionListener(e -> settingsWindow.setVisible(true));
+        btnSettings.addActionListener(e -> settingsWindow.setVisible(true));
         btnExit.addActionListener(e -> System.exit(0));
     }
 
@@ -53,16 +55,19 @@ public class MyWindow extends JFrame {
     }
 
     public void createField(int rows, int columns) {
-        JPanel panel = new JPanel(new GridLayout(rows, columns));
+        if(panelWithButtons != null){
+            panelWithButtons.removeAll(); //если меняю что-то в настройках, удалю старое поле с кнопками
+        }
+        panelWithButtons = new JPanel(new GridLayout(rows, columns));
         buttons = new CustomButton[rows][columns];
         for (int y = 0; y < columns; y++) {
             for (int x = 0; x < rows; x++) {
                 CustomButton button = new CustomButton(game);
                 buttons[y][x] = button;
-                panel.add(button);
+                panelWithButtons.add(button);
             }
         }
-        add(panel);
+        add(panelWithButtons);
         setVisible(true);
     }
 
