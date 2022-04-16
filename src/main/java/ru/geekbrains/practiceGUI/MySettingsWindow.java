@@ -1,11 +1,12 @@
-package ru.geekbrains.homework8;
+package ru.geekbrains.practiceGUI;
 
+import ru.geekbrains.homework8.GameMap;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 
-public class SettingsWindow extends JFrame {
+public class MySettingsWindow extends JFrame {
     private static final int WINDOW_WIDTH = 350;
     private static final int WINDOW_HEIGHT = 300;
     private static final int MIN_WIN_LENGTH = 3;
@@ -18,17 +19,17 @@ public class SettingsWindow extends JFrame {
     private JRadioButton humanVsHuman;
     private JSlider winLengthSlider;
     private JSlider fieldSizeSlider;
-    private GameWindow gameWindow;
+    private MyWindow myWindow;
 
-    public SettingsWindow(GameWindow gameWindow) {
-        this.gameWindow = gameWindow;
+    public MySettingsWindow(MyWindow gameWindow) {
+        this.myWindow = gameWindow;
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(gameWindow);
         setResizable(false);
         setTitle("Settings");
         setLayout(new GridLayout(10, 1));
         JButton buttonStart = new JButton("START");
-        buttonStart.addActionListener(e -> submitSettings(gameWindow));
+        buttonStart.addActionListener(e -> submitSettings(myWindow));
         addFieldSize();
         addGameMode();
         add(buttonStart);
@@ -69,7 +70,7 @@ public class SettingsWindow extends JFrame {
         add(humanVsHuman);
     }
 
-    private void submitSettings(GameWindow gameWindow) {
+    private void submitSettings(MyWindow gameWindow) {
         int gameMode;
         if (humanVsAi.isSelected()) {
             gameMode = GameMap.MODE_VS_AI;

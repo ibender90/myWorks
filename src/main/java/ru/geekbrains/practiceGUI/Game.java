@@ -1,44 +1,59 @@
 package ru.geekbrains.practiceGUI;
-
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
 
-    private static MyWindow window = new MyWindow();
-    private static CustomButton[][] buttonField = window.getButtons();
+    private static MyWindow window;
+    private static CustomButton[][] buttonField;
+    public static final int MODE_VS_AI = 0;
+    public static final int MODE_VS_HUMAN = 1;
+    private int gameMode;
+    private boolean isGameOver;
+    private boolean isInitialized;
 
     static final char DOT_X = 'X';
-    private static final char DOT_0 = '0';
+    private final char DOT_0 = '0';
     static final char DOT_EMPTY = '.';
 
-    private static final Scanner scanner = new Scanner(System.in);
-    private static final Random random = new Random();
+    private final Scanner scanner = new Scanner(System.in);
+    private final Random random = new Random();
 
-    private static char[][] field;
-    private static char dotHuman = DOT_X;
-    private static char dotAi = DOT_0;
-    private static int fieldSizeX = 3;
-    private static int fieldSizeY = 3;
-    private static int scoreHuman;
-    private static int scoreAi;
-    private static int roundCounter;
-    private static int winLength = 3;
-
+    private char[][] field;
+    private char dotHuman = DOT_X;
+    private char dotAi = DOT_0;
+    private int fieldSizeX = 3;
+    private int fieldSizeY = 3;
+    private int scoreHuman;
+    private int scoreAi;
+    private int roundCounter;
+    private int winLength;
 
     public static void main(String[] args) {
-        //startNewGame();
-
+        window = new MyWindow();
+    }
+    public Game() {
+    }
+    public void startNewGame(int gameMode, int fieldSize, int winLength) {
+        this.gameMode = gameMode;
+        fieldSizeX = fieldSize;
+        fieldSizeY = fieldSize;
+        this.winLength = winLength;
+        window.createField(fieldSizeY,fieldSizeX);
+        isGameOver = false;
+        isInitialized = true;
+        buttonField = window.getButtons();
     }
 
-    public static void getResponse(CustomButton button) { // хочу получить ответ на нажатие кнопки
+
+    public void getResponse() { // хочу получить ответ на нажатие кнопки
         gameCheck(dotHuman);
         aiTurn();
         gameCheck(dotAi);
     }
 
-    private static boolean simpleCheckWin(char dot) {
+    private boolean simpleCheckWin(char dot) {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (buttonField[y][x].dot == dot) { //if cycle found dot
@@ -54,7 +69,7 @@ public class Game {
         return false;
     }
 
-    private static void initField(int sizeX, int sizeY) { // оставлю инициализацию
+    private void initField(int sizeX, int sizeY) { // оставлю инициализацию
         fieldSizeX = sizeX;
         fieldSizeY = sizeY;
         field = new char[fieldSizeY][fieldSizeX];
@@ -66,46 +81,8 @@ public class Game {
         }
     }
 
-    private static void printField() { //надо поменять на setText
-        System.out.print("+");
 
-        for (int i = 0; i < fieldSizeX * 2 + 1; i++) {
-            System.out.print(i % 2 == 0 ? "-" : i / 2 + 1); //print 1-2-3-..
-        }
-        System.out.println();
-        for (int i = 0; i < fieldSizeY; i++) {
-            System.out.print(i + 1 + "|");
-
-            for (int j = 0; j < fieldSizeX; j++) {
-                System.out.print(field[i][j] + "|");
-            }
-            System.out.println();
-        }
-        for (int i = 0; i < fieldSizeX * 2 + 1; i++) {
-            System.out.print("_");
-        }
-        System.out.println();
-    }
-
-//    private static void startNewGame() {
-//        setFieldSize();
-//        while (true) {
-//            chooseDot();
-//            playRound();
-//
-//            System.out.printf("SCORE:  HUMAN  AI\n" +
-//                    "          %d     %d\n", scoreHuman, scoreAi);
-//
-//            System.out.print("Play again? (Y/N): ");
-//
-//            if (!scanner.next().toLowerCase(Locale.ROOT).equals("y")) {
-//                System.out.println("Goodbye");
-//                break;
-//            }
-//        }
-//    }
-
-    private static void setFieldSize() {
+    private void setFieldSize() {
         do {
             System.out.println("Enter field size: ");
             fieldSizeX = scanner.nextInt();
@@ -113,41 +90,38 @@ public class Game {
         } while (!(fieldSizeX <= 10 && fieldSizeY <= 10 && fieldSizeX > 2 && fieldSizeY > 2));
     }
 
-    private static void playRound() {
+    private void playRound() {
         System.out.printf("Round %d start\n", ++roundCounter);
         initField(fieldSizeX, fieldSizeY);
         if (dotHuman == DOT_X) {
-            printField();
+
             humanFirst();
         } else {
             aiFirst();
         }
     }
 
-    private static void aiFirst() {
+    private void aiFirst() {
         while (true) {
             aiTurn();
-            printField();
             if (gameCheck(dotAi)) {
                 break;
             }
             humanTurn();
-            printField();
             if (gameCheck(dotHuman)) {
                 break;
             }
         }
     }
 
-    private static void humanFirst() {
+    private void humanFirst() {
         while (true) {
             humanTurn();
-            printField();
+
             if (gameCheck(dotHuman)) {
                 break;
             }
             aiTurn();
-            printField();
             if (gameCheck(dotAi)) {
                 break;
             }
@@ -155,7 +129,7 @@ public class Game {
 
     }
 
-    private static boolean gameCheck(char dot) {
+    private boolean gameCheck(char dot) {
         if (simpleCheckWin(dot) && dot == dotHuman) {
             System.out.println("You win!");
             scoreHuman++;
@@ -168,7 +142,7 @@ public class Game {
         return checkDraw();
     }
 
-    private static void chooseDot() {
+    private void chooseDot() {
         System.out.print("To play with X type 'X', to play with '0' type anything: ");
 
         if (scanner.next().toLowerCase(Locale.ROOT).equals("x")) {
@@ -180,7 +154,7 @@ public class Game {
         }
     }
 
-    private static void humanTurn() {
+    private void humanTurn() {
         int x;
         int y;
 
@@ -193,7 +167,7 @@ public class Game {
         buttonField[y][x].setText(String.valueOf(dotHuman));
     }
 
-    private static void aiTurn() {
+    private void aiTurn() {
         if (placeDotInTheMiddle()) {
             System.out.println("ai placed dot in the middle or next to it");
         } else if (winAttempt()) {
@@ -215,7 +189,7 @@ public class Game {
         }
     }
 
-    private static boolean placeDotInTheMiddle() {
+    private boolean placeDotInTheMiddle() {
         //place dot in the middle or close to it
         if (isCellValid(fieldSizeY / 2, fieldSizeX / 2)) {
             buttonField[fieldSizeY / 2][fieldSizeX / 2].dot = dotAi;
@@ -226,7 +200,7 @@ public class Game {
         return false;
     }
 
-    private static boolean blockPlayer() {
+    private boolean blockPlayer() {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (isCellValid(y, x)) {
@@ -245,7 +219,7 @@ public class Game {
         return false;
     }
 
-    private static boolean winAttempt() {
+    private boolean winAttempt() {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (isCellValid(y, x)) {
@@ -263,13 +237,13 @@ public class Game {
         return false;
     }
 
-    private static boolean isCellValid(int y, int x) {
+    private boolean isCellValid(int y, int x) {
         //return buttonField[y][x].getText().equals(" ");
         return buttonField[y][x].isEnabled();
         //return x >= 0 && y >= 0 && x < fieldSizeX && y < fieldSizeY && field[y][x] == DOT_EMPTY;
     }
 
-    private static boolean checkDraw() {
+    private boolean checkDraw() {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (buttonField[y][x].isEnabled()) {
@@ -281,7 +255,7 @@ public class Game {
         return true;
     }
 
-    private static boolean drawLine(int y, int x, int shiftX, int shiftY, char dot) {
+    private boolean drawLine(int y, int x, int shiftX, int shiftY, char dot) {
         int winCounter = 0;
 
         while (x < fieldSizeX && y < fieldSizeY && y >= 0 && buttonField[y][x].dot == dot) { //y-- will happen

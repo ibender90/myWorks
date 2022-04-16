@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 
 public class CustomButton extends JButton {
     char dot = Game.DOT_EMPTY;
+    Game game;
 
-    public CustomButton(int y, int x) {
+    public CustomButton(Game game) {
+        this.game = game;
         setText(" ");
         addActionListener(new ActionListener() {
             @Override
@@ -15,7 +17,7 @@ public class CustomButton extends JButton {
                 setText(String.valueOf(Game.DOT_X));
                 dot = Game.DOT_X;
                 setEnabled(false);
-                Game.getResponse(CustomButton.this);
+                game.getResponse();
             }
         });
     }
