@@ -3,27 +3,25 @@ package ru.geekbrains.practiceGUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class MyWindow extends JFrame {
+public class GameWindow extends JFrame {
     private final int WIDTH = 640;
     private final int HEIGHT = 480;
     private int rows = 3;
     private int columns = 3;
     private CustomButton[][] buttons;
-    private Game game;
+    private GameEngine gameEngine;
     private String score;
     private JPanel panelWithButtons;
 
-    public MyWindow() {
-        setSize(WIDTH,HEIGHT);
+    public GameWindow() {
+        setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
-        //setBounds(500, 300, WIDTH, HEIGHT);
         setTitle("TicTacToe");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        JPanel score = new JPanel();
-        JLabel text = new JLabel(setScore(game));
-        score.add(text);
-        add(score, BorderLayout.NORTH);
+        if(viewRoundCounter()){
+            repaint();
+        };
 
         MySettingsWindow settingsWindow = new MySettingsWindow(this);
 
@@ -47,22 +45,22 @@ public class MyWindow extends JFrame {
     }
 
     public void startGame(int gameMode, int fieldSize, int winLength) {
-        game = new Game();
+        gameEngine = new GameEngine();
         rows = fieldSize;
         columns = fieldSize;
-        game.startNewGame(gameMode, fieldSize, winLength);
+        gameEngine.startNewGame(gameMode, fieldSize, winLength);
         System.out.printf("Mode: %d, Size: %d length: %d\n", gameMode, fieldSize, winLength);
     }
 
     public void createField(int rows, int columns) {
-        if(panelWithButtons != null){
+        if (panelWithButtons != null) {
             panelWithButtons.removeAll(); //если меняю что-то в настройках, удалю старое поле с кнопками
         }
         panelWithButtons = new JPanel(new GridLayout(rows, columns));
         buttons = new CustomButton[rows][columns];
         for (int y = 0; y < columns; y++) {
             for (int x = 0; x < rows; x++) {
-                CustomButton button = new CustomButton(game);
+                CustomButton button = new CustomButton(gameEngine);
                 buttons[y][x] = button;
                 panelWithButtons.add(button);
             }
@@ -71,13 +69,12 @@ public class MyWindow extends JFrame {
         setVisible(true);
     }
 
-    public String setScore(Game condition) {
-        if (condition == null) {
-            return " ";
-        } else {
-            return "Your score: " + condition.scoreHuman + "      AI score: " + condition.scoreAi;
-        }
+    public boolean viewRoundCounter(){
+        JPanel round = new JPanel();
+        int roundNumber = gameEngine == null ? 1 : gameEngine.getRoundCounter();
+        JLabel text = new JLabel("Round: " + roundNumber);
+        round.add(text);
+        add(round, BorderLayout.NORTH);
+        return true;
     }
-
-
 }

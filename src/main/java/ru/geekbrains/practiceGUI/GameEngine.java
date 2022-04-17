@@ -1,39 +1,43 @@
 package ru.geekbrains.practiceGUI;
-import java.util.Locale;
 import java.util.Random;
-import java.util.Scanner;
 
-public class Game {
+public class GameEngine {
 
-    private static MyWindow window;
+    public enum Result {
+        PLAYER1_WIN, PLAYER2_WIN, COMPUTER_WIN, DRAW;
+    }
+
+    private Result whoWin;
+
+    private static GameWindow window;
     private static CustomButton[][] buttonField;
     public static final int MODE_VS_AI = 0;
     public static final int MODE_VS_HUMAN = 1;
-    private int gameMode;
-    private boolean isGameOver;
-    private boolean isInitialized;
+    private static int gameMode;
 
-    static final char DOT_X = 'X';
-    private final char DOT_0 = '0';
-    static final char DOT_EMPTY = '.';
+    public static final char DOT_X = 'X';
+    public static final char DOT_0 = '0';
+    public static final char DOT_EMPTY = '.';
 
-    private final Scanner scanner = new Scanner(System.in);
     private final Random random = new Random();
 
 
-    private char dotHuman = DOT_X;
+    private char dotHuman1 = DOT_X;
+    private char dotHuman2 = DOT_0;
     private char dotAi = DOT_0;
     private int fieldSizeX;
     private int fieldSizeY;
-    int scoreHuman;
+    int scoreHuman1;
     int scoreAi;
-    private int roundCounter;
+    int scoreHuman2;
+    private int roundCounter = 1;
     private int winLength;
+    private boolean player1Turn = true;
 
     public static void main(String[] args) {
-        window = new MyWindow();
+        window = new GameWindow();
     }
-    public Game() {
+    public GameEngine() {
     }
     public void startNewGame(int gameMode, int fieldSize, int winLength) { //добавть fieldSizeY
         this.gameMode = gameMode;
@@ -41,25 +45,30 @@ public class Game {
         fieldSizeY = fieldSize;
         this.winLength = winLength;
         window.createField(fieldSizeY,fieldSizeX);
-        isGameOver = false;
-        isInitialized = true;
         buttonField = window.getButtons();
     }
 
 
-    public void getResponse() { // хочу получить ответ на нажатие кнопки
+    public void getResponseFromAI() { // хочу получить ответ на нажатие кнопки
         //сделаю режим для игры против компа
-        if(gameCheck(dotHuman)){
+        if(gameCheckHumanVsAI(dotHuman1)){
             showGameOverWindow();
         } else {
             aiTurn();
-            if(gameCheck(dotAi)){
+            if(gameCheckHumanVsAI(dotAi)){
                 showGameOverWindow();
             }
         }
     }
+    public void checkResult(char dot){
+        if(gameCheckHumanVsHuman(dot)){
+            showGameOverWindow();
+        } else {
+            player1Turn = !player1Turn;
+        }
+    }
 
-    private boolean simpleCheckWin(char dot) {
+    private boolean checkWinAlgorithm(char dot) {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (buttonField[y][x].dot == dot) { //if cycle found dot
@@ -75,14 +84,31 @@ public class Game {
         return false;
     }
 
-    private boolean gameCheck(char dot) {
-        if (simpleCheckWin(dot) && dot == dotHuman) {
-            System.out.println("You win!");
-            scoreHuman++;
+    private boolean gameCheckHumanVsAI(char dot) {
+        if (checkWinAlgorithm(dot) && dot == dotHuman1) {
+            whoWin = Result.PLAYER1_WIN;
+            scoreHuman1++;
+            roundCounter++;
             return true;
-        } else if (simpleCheckWin(dot) && dot == dotAi) {
-            System.out.println("Computer win!");
+        } else if (checkWinAlgorithm(dot) && dot == dotAi) {
+            whoWin = Result.COMPUTER_WIN;
             scoreAi++;
+            roundCounter++;
+            return true;
+        }
+        return checkDraw();
+    }
+
+    private boolean gameCheckHumanVsHuman(char dot) {
+        if (checkWinAlgorithm(dot) && dot == dotHuman1) {
+            whoWin = Result.PLAYER1_WIN;
+            scoreHuman1++;
+            roundCounter++;
+            return true;
+        } else if (checkWinAlgorithm(dot)&& dot == dotHuman2){
+            whoWin = Result.PLAYER2_WIN;
+            scoreHuman2++;
+            roundCounter++;
             return true;
         }
         return checkDraw();
@@ -112,7 +138,6 @@ public class Game {
     }
 
     private boolean placeDotInTheMiddle() {
-        //place dot in the middle or close to it
         if (isCellValid(fieldSizeY / 2, fieldSizeX / 2)) {
             buttonField[fieldSizeY / 2][fieldSizeX / 2].dot = dotAi;
             buttonField[fieldSizeY / 2][fieldSizeX / 2].setText(String.valueOf(dotAi));
@@ -126,8 +151,8 @@ public class Game {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (isCellValid(y, x)) {
-                    buttonField[y][x].dot = dotHuman;
-                    if (simpleCheckWin(dotHuman)) {
+                    buttonField[y][x].dot = dotHuman1;
+                    if (checkWinAlgorithm(dotHuman1)) {
                         buttonField[y][x].dot = dotAi;
                         buttonField[y][x].setText(String.valueOf(dotAi));
                         buttonField[y][x].setEnabled(false);
@@ -146,7 +171,7 @@ public class Game {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (isCellValid(y, x)) {
                     buttonField[y][x].dot = dotAi;
-                    if (simpleCheckWin(dotAi)) {
+                    if (checkWinAlgorithm(dotAi)) {
                         buttonField[y][x].setText(String.valueOf(dotAi));
                         buttonField[y][x].setEnabled(false);
                         return true;
@@ -169,11 +194,12 @@ public class Game {
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
                 if (buttonField[y][x].isEnabled()) {
-                    return false; //while we can find any empty cell
+                    return false; //while we can find any button unpressed
                 }
             }
         }
-        System.out.println("DRAW");
+        whoWin = Result.DRAW;
+        roundCounter++;
         return true;
     }
 
@@ -200,13 +226,41 @@ public class Game {
                 button.setText(" ");
             }
         }
+        window.viewRoundCounter();
     }
 
     private void showGameOverWindow(){
         new GameOverWindow(this);
     }
 
-    public int[] getScore(){
-          return new int[]{scoreAi, scoreHuman};
+    public int getScoreHuman1() {
+        return scoreHuman1;
     }
+
+    public int getScoreHuman2() {
+        return scoreHuman2;
+    }
+
+    public int getScoreAi() {
+        return scoreAi;
+    }
+
+    public int getRoundCounter() {
+        return roundCounter;
+    }
+
+    public int getGameMode() {
+        return gameMode;
+    }
+
+    public boolean isPlayer1Turn() {
+        return player1Turn;
+    }
+
+    public Result getWhoWin() {
+        return whoWin;
+    }
+
+
+
 }

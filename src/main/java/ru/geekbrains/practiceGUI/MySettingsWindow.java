@@ -19,12 +19,12 @@ public class MySettingsWindow extends JFrame {
     private JRadioButton humanVsHuman;
     private JSlider winLengthSlider;
     private JSlider fieldSizeSlider;
-    private MyWindow myWindow;
+    private GameWindow gameWindow;
 
-    public MySettingsWindow(MyWindow gameWindow) {
+    public MySettingsWindow(GameWindow gameWindow) {
         setVisible(true);
         setAlwaysOnTop(true);
-        this.myWindow = gameWindow;
+        this.gameWindow = gameWindow;
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(gameWindow);
         setResizable(false);
@@ -34,7 +34,7 @@ public class MySettingsWindow extends JFrame {
         buttonStart.addActionListener(e -> {
             //очистить поле
 
-            submitSettings(myWindow);
+            submitSettings(this.gameWindow);
         });
         addFieldSize();
         addGameMode();
@@ -76,7 +76,7 @@ public class MySettingsWindow extends JFrame {
         add(humanVsHuman);
     }
 
-    private void submitSettings(MyWindow gameWindow) {
+    private void submitSettings(GameWindow gameWindow) {
         int gameMode;
         if (humanVsAi.isSelected()) {
             gameMode = GameMap.MODE_VS_AI;

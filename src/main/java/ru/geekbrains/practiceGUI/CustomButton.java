@@ -5,20 +5,40 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CustomButton extends JButton {
-    char dot = Game.DOT_EMPTY;
-    Game game;
+    char dot = GameEngine.DOT_EMPTY;
+    GameEngine gameEngine;
 
-    public CustomButton(Game game) {
-        this.game = game;
+    public CustomButton(GameEngine gameEngine) {
+        this.gameEngine = gameEngine;
         setText(" ");
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setText(String.valueOf(Game.DOT_X));
-                dot = Game.DOT_X;
-                setEnabled(false);
-                game.getResponse();
+                if(gameEngine.getGameMode() == GameEngine.MODE_VS_AI) {
+                    placeX();
+                    gameEngine.getResponseFromAI();
+                } else {
+                    if(gameEngine.isPlayer1Turn()) {
+                        placeX();
+                    } else {
+                        place0();
+                    }
+                }
             }
         });
+    }
+
+    private void place0() {
+        setText(String.valueOf(GameEngine.DOT_0));
+        dot = GameEngine.DOT_0;
+        setEnabled(false);
+        gameEngine.checkResult(GameEngine.DOT_0);
+    }
+
+    private void placeX(){
+        setText(String.valueOf(GameEngine.DOT_X));
+        dot = GameEngine.DOT_X;
+        setEnabled(false);
+        gameEngine.checkResult(GameEngine.DOT_X);
     }
 }
