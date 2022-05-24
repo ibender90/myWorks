@@ -1,15 +1,13 @@
 package ru.geekbrains.homework_13;
 /*
-Разница в скорости на m1 чипе получилась 850ms  и  1 ms
+Разница в скорости на m1 чипе получилась 1274ms  и  297 ms
  */
-
-import java.util.Arrays;
 
 import static java.lang.System.arraycopy;
 
 public class Multithreading {
-    static final int size = 100;//000000;
-    static final int h = size / 2;
+    private static final int size = 10_000_000;
+    private static final int h = size / 2;
 
     public static void main(String[] args) {
         simpleArrayProcessing();
@@ -46,7 +44,7 @@ public class Multithreading {
                 for (int i = 0; i < h; i++) {
                     firstHalf[i] = (float) (firstHalf[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
                 }
-                System.out.println(Arrays.toString(firstHalf));
+                //System.out.println(firstHalf[h-1]);
             }
         });
 
@@ -57,14 +55,19 @@ public class Multithreading {
                 for (int i = 0; i < h; i++) {
                     secondHalf[i] = (float) (secondHalf[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
                 }
-                System.out.println(Arrays.toString(secondHalf));
+                //System.out.println(secondHalf[h-1]);
             }
-
-
         });
 
         processFirstHalf.start();
         processSecondHalf.start();
+
+        try {
+            processFirstHalf.join();
+            processSecondHalf.join();
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
 
         System.arraycopy(firstHalf, 0, arr, 0, h);
         System.arraycopy(secondHalf, 0, arr, h, h);
@@ -74,7 +77,7 @@ public class Multithreading {
 
         System.out.println(stopTime - startTime);
 
-        System.out.println(Arrays.toString(arr));
+        //System.out.println(arr[size-1]);
     }
 
     private static float[] makeArr() {
