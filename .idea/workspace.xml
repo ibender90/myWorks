@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/classwork/ClientWithGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/classwork/HTTPServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/classwork/SimpleTCPServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/classwork/SingleThreadTCPClient1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/classwork/SingleThreadTCPClient2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/classwork/SingleThreadTCPServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/homework14/ConnectionThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/homework14/MultiThreadTCPServer.java" afterDir="false" />
+    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="homework14 network">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/geekbrains/homework1/HomeWorkApp.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,9 +124,32 @@
       <workItem from="1647801193653" duration="3331000" />
       <workItem from="1647884673199" duration="15000" />
     </task>
+    <task id="LOCAL-00001" summary="homework14 network">
+      <created>1653493850579</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1653493850579</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="homework14 network" />
+    <option name="LAST_COMMIT_MESSAGE" value="homework14 network" />
   </component>
 </project>
