@@ -4,8 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="homework14 network">
+    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="init commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/LimitedMultiton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/builder/CookedFood.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/builder/Director.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/builder/FoodBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/builder/Pancake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/builder/PancakeBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/builder/Waffle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/builder/WaffleBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/factory/ElectronicStoreFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/factory/ElectronicsStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/factory/GroceryStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/factory/GroceryStoreFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/factory/Store.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/factory/StoreApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/factory/StoreFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/Singleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/geekbrains/homework1/HomeWorkApp.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,11 +32,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="homework14_network" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -37,13 +60,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager" selected="Application.SingleThreadTCPClient2">
-    <configuration name="MultiThreadTCPServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.homework14.MultiThreadTCPServer" />
+  <component name="RunManager" selected="Application.BuilderApp">
+    <configuration name="BuilderApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.builder.BuilderApp" />
       <module name="homework1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.geekbrains.homework14.*" />
+          <option name="PATTERN" value="ru.geekbrains.patterns.builder.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -51,12 +74,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SimpleTCPServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.classwork.SimpleTCPServer" />
+    <configuration name="MultiThreadTCPServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.homework14.MultiThreadTCPServer" />
       <module name="homework1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.geekbrains.classwork.*" />
+          <option name="PATTERN" value="ru.geekbrains.homework14.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,12 +113,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.homework14.TestConnection" />
+    <configuration name="StoreApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.factory.StoreApp" />
       <module name="homework1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.geekbrains.homework14.*" />
+          <option name="PATTERN" value="ru.geekbrains.patterns.factory.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BuilderApp" />
+        <item itemvalue="Application.StoreApp" />
         <item itemvalue="Application.SingleThreadTCPClient2" />
         <item itemvalue="Application.SingleThreadTCPClient1" />
         <item itemvalue="Application.MultiThreadTCPServer" />
-        <item itemvalue="Application.TestConnection" />
-        <item itemvalue="Application.SimpleTCPServer" />
       </list>
     </recent_temporary>
   </component>
@@ -123,6 +146,8 @@
       <updated>1647801192057</updated>
       <workItem from="1647801193653" duration="3331000" />
       <workItem from="1647884673199" duration="15000" />
+      <workItem from="1656256933455" duration="3987000" />
+      <workItem from="1656328371185" duration="1015000" />
     </task>
     <task id="LOCAL-00001" summary="homework14 network">
       <created>1653493850579</created>
@@ -131,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653493850579</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init commit">
+      <created>1656257037938</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656257037938</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +182,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="homework14 network" />
-    <option name="LAST_COMMIT_MESSAGE" value="homework14 network" />
+    <MESSAGE value="init commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
   </component>
 </project>
