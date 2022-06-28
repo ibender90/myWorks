@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="builder and singleton">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/easy_builder/EasyBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/easy_builder/KitchenFurniture.java" afterDir="false" />
+    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="easy builder">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/adapter/AppWithAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/adapter/BMWX3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/adapter/Movable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/adapter/MovableAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/adapter/MovableAdapterImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +48,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager" selected="Application.EasyBuilder">
+  <component name="RunManager" selected="Application.AppWithAdapter">
+    <configuration name="AppWithAdapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.adapter.AppWithAdapter" />
+      <module name="homework1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.geekbrains.patterns.adapter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BuilderApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.builder.BuilderApp" />
       <module name="homework1" />
@@ -65,19 +81,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.geekbrains.patterns.easy_builder.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SingleThreadTCPClient1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.classwork.SingleThreadTCPClient1" />
-      <module name="homework1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.geekbrains.classwork.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -113,11 +116,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AppWithAdapter" />
         <item itemvalue="Application.EasyBuilder" />
         <item itemvalue="Application.BuilderApp" />
         <item itemvalue="Application.StoreApp" />
         <item itemvalue="Application.SingleThreadTCPClient2" />
-        <item itemvalue="Application.SingleThreadTCPClient1" />
       </list>
     </recent_temporary>
   </component>
@@ -132,7 +135,7 @@
       <workItem from="1647801193653" duration="3331000" />
       <workItem from="1647884673199" duration="15000" />
       <workItem from="1656256933455" duration="3987000" />
-      <workItem from="1656328371185" duration="2622000" />
+      <workItem from="1656328371185" duration="4166000" />
     </task>
     <task id="LOCAL-00001" summary="homework14 network">
       <created>1653493850579</created>
@@ -155,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656329609463</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="easy builder">
+      <created>1656331018947</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656331018947</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +186,7 @@
     <MESSAGE value="homework14 network" />
     <MESSAGE value="init commit" />
     <MESSAGE value="builder and singleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="builder and singleton" />
+    <MESSAGE value="easy builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="easy builder" />
   </component>
 </project>
