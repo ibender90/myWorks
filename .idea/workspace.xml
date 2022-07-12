@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="adapter">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/decorator/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/decorator/ChristmasTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/decorator/ChristmasTreeDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/decorator/ChristmasTreeImplementation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/decorator/Lights.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/decorator/Toys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/observer/Document.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/observer/JournalApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/observer/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/observer/Subscriber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/HTMLPersonVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/PersonVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/School.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/SchoolApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/TextPersonVisitor.java" afterDir="false" />
+    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="subscriber">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/strategy/Discountable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/strategy/FixedDiscount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/strategy/PercentDiscount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/strategy/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/strategy/ShopApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/strategy/ShoppingCart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +57,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager" selected="Application.JournalApp">
+  <component name="RunManager" selected="Application.ShopApp">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.decorator.App" />
       <module name="homework1" />
@@ -89,19 +77,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.geekbrains.patterns.adapter.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EasyBuilder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.easy_builder.EasyBuilder" />
-      <module name="homework1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.geekbrains.patterns.easy_builder.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,13 +110,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShopApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.strategy.ShopApp" />
+      <module name="homework1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.geekbrains.patterns.strategy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ShopApp" />
         <item itemvalue="Application.JournalApp" />
         <item itemvalue="Application.SchoolApp" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.AppWithAdapter" />
-        <item itemvalue="Application.EasyBuilder" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +144,7 @@
       <workItem from="1647801193653" duration="3331000" />
       <workItem from="1647884673199" duration="15000" />
       <workItem from="1656256933455" duration="3987000" />
-      <workItem from="1656328371185" duration="14288000" />
+      <workItem from="1656328371185" duration="16872000" />
     </task>
     <task id="LOCAL-00001" summary="homework14 network">
       <created>1653493850579</created>
@@ -193,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656432153490</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="subscriber">
+      <created>1657264737941</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657264737941</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +211,8 @@
     <MESSAGE value="builder and singleton" />
     <MESSAGE value="easy builder" />
     <MESSAGE value="adapter" />
-    <option name="LAST_COMMIT_MESSAGE" value="adapter" />
+    <MESSAGE value="subscriber" />
+    <option name="LAST_COMMIT_MESSAGE" value="subscriber" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
