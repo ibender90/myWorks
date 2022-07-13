@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="mediator">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/DialingState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/EnteringNumberState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/Phone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/PhoneApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/TalkingState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/WaitingState.java" afterDir="false" />
+    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="state">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/command/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/command/Light.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/command/LightSwitch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/command/TurnLightOff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/command/TurnLightOn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +63,7 @@
       <recent name="ru.geekbrains.patterns.state" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PhoneApp">
+  <component name="RunManager" selected="Application.LightSwitch">
     <configuration name="JournalApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.observer.JournalApp" />
       <module name="homework1" />
@@ -79,12 +77,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PhoneApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.state.PhoneApp" />
+    <configuration name="LightSwitch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.command.LightSwitch" />
       <module name="homework1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.geekbrains.patterns.state.*" />
+          <option name="PATTERN" value="ru.geekbrains.patterns.command.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -92,12 +90,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SchoolApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.visitor.SchoolApp" />
+    <configuration name="PhoneApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.state.PhoneApp" />
       <module name="homework1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.geekbrains.patterns.visitor.*" />
+          <option name="PATTERN" value="ru.geekbrains.patterns.state.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,11 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LightSwitch" />
         <item itemvalue="Application.PhoneApp" />
         <item itemvalue="Application.TaxiApp" />
         <item itemvalue="Application.ShopApp" />
         <item itemvalue="Application.JournalApp" />
-        <item itemvalue="Application.SchoolApp" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +150,7 @@
       <workItem from="1647801193653" duration="3331000" />
       <workItem from="1647884673199" duration="15000" />
       <workItem from="1656256933455" duration="3987000" />
-      <workItem from="1656328371185" duration="22579000" />
+      <workItem from="1656328371185" duration="23227000" />
     </task>
     <task id="LOCAL-00001" summary="homework14 network">
       <created>1653493850579</created>
@@ -210,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657614266744</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="state">
+      <created>1657724510420</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1657724510420</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +241,8 @@
     <MESSAGE value="subscriber" />
     <MESSAGE value="strategy" />
     <MESSAGE value="mediator" />
-    <option name="LAST_COMMIT_MESSAGE" value="mediator" />
+    <MESSAGE value="state" />
+    <option name="LAST_COMMIT_MESSAGE" value="state" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
