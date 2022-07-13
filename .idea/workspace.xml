@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="strategy">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/mediator/ConcreteMediator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/mediator/ConcreteTaxi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/mediator/Mediator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/mediator/Taxi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/mediator/TaxiApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/mediator/Trip.java" afterDir="false" />
+    <list default="true" id="63cef6f1-e492-440d-bdca-ee30940e9b86" name="Changes" comment="mediator">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/DialingState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/EnteringNumberState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/Phone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/PhoneApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/TalkingState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/state/WaitingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +47,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="26f4DojdijUC6mIETHjK54ciZdv" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,13 +60,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager" selected="Application.TaxiApp">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.decorator.App" />
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.geekbrains.patterns.state" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.PhoneApp">
+    <configuration name="JournalApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.observer.JournalApp" />
       <module name="homework1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.geekbrains.patterns.decorator.*" />
+          <option name="PATTERN" value="ru.geekbrains.patterns.observer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -71,12 +79,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JournalApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.observer.JournalApp" />
+    <configuration name="PhoneApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.patterns.state.PhoneApp" />
       <module name="homework1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.geekbrains.patterns.observer.*" />
+          <option name="PATTERN" value="ru.geekbrains.patterns.state.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -125,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PhoneApp" />
         <item itemvalue="Application.TaxiApp" />
         <item itemvalue="Application.ShopApp" />
         <item itemvalue="Application.JournalApp" />
         <item itemvalue="Application.SchoolApp" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -144,7 +152,7 @@
       <workItem from="1647801193653" duration="3331000" />
       <workItem from="1647884673199" duration="15000" />
       <workItem from="1656256933455" duration="3987000" />
-      <workItem from="1656328371185" duration="19918000" />
+      <workItem from="1656328371185" duration="22579000" />
     </task>
     <task id="LOCAL-00001" summary="homework14 network">
       <created>1653493850579</created>
@@ -195,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657610727859</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="mediator">
+      <created>1657614266744</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657614266744</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +235,8 @@
     <MESSAGE value="adapter" />
     <MESSAGE value="subscriber" />
     <MESSAGE value="strategy" />
-    <option name="LAST_COMMIT_MESSAGE" value="strategy" />
+    <MESSAGE value="mediator" />
+    <option name="LAST_COMMIT_MESSAGE" value="mediator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -229,11 +245,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/visitor/SchoolApp.java</url>
           <line>22</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/geekbrains/patterns/mediator/TaxiApp.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
